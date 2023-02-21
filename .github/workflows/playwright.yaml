@@ -14,3 +14,5 @@ jobs:
         run: npx playwright install-deps
       - name: Install dependencies for Chromium only
         run: npx playwright install-deps chromium
+      - name: Run tests
+        run: npm run test -- --testPathPattern=tests
