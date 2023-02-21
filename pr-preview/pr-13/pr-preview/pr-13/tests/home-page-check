@@ -1,0 +1,9 @@
+import { test } from "@framework/test";
+
+test.describe("Verify GuardianUI.com home page", () => {
+	test("Should verify that the target page loads", async({ page, dappPage }) => {
+		// Setup
+		await page.goto("https://www.guardianui.com/");
+		await page.waitForSelector('text=GuardianUI');
+	});
+});
