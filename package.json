@@ -1,0 +1,30 @@
+{
+  "name": "landing-page",
+  "version": "1.0.0",
+  "description": "GuardianUI.com landing page.",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuardianUI/landing-page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GuardianUI/landing-page/issues"
+  },
+  "homepage": "https://github.com/GuardianUI/landing-page#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.31.0",
+    "playwright": "^1.31.0"
+  },
+  "dependencies": {
+    "typescript": "^4.9.5"
+  },
+  "directories": {
+    "test": "tests"
+  }
+}
