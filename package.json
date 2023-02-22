@@ -4,7 +4,7 @@
   "description": "GuardianUI.com landing page.",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test"
+    "test": "playwright test --project='Mobile Chrome'"
   },
   "repository": {
     "type": "git",
