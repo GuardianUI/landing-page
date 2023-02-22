@@ -5,7 +5,10 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
+  - before: |
+      nvm install --lts
   - init: |
+      nvm use --lts
       npm install
       sudo npx playwright install-deps
     command: |

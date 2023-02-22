@@ -17,7 +17,7 @@ test.describe("Verify GuardianUI.com home page", () => {
     const img = null;
     // fetch('https://guardianui-ui-refexp-click.hf.space/run/predict')
     const centerPoint = refexpModelPredict({
-      refexp: "select Join Waitlist button in the center",
+      refexp: "select GuardianUI logo at the top left",
       screenshot: img,
     });
     // use predicted coordinates to verify against known data-testid label
@@ -28,8 +28,7 @@ test.describe("Verify GuardianUI.com home page", () => {
           return false;
         }
         const testAttribute = element.getAttribute("data-testid");
-        const isJoinCenterButton =
-          "join-waitlist-button-hero" === testAttribute;
+        const isJoinCenterButton = "guardianui-logo" === testAttribute;
         return isJoinCenterButton;
       },
       [centerPoint.x, centerPoint.y]
