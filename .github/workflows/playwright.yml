@@ -1,9 +1,7 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ main, master ]
   pull_request:
-    branches: [ main, master ]
 jobs:
   test:
     timeout-minutes: 60
@@ -23,5 +21,7 @@ jobs:
       if: always()
       with:
         name: playwright-report
-        path: playwright-report/
+        path: |
+          playwright-report/
+          test-results/
         retention-days: 30
