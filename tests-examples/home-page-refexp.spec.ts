@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { GUIPage } from "./models/GUIPage";
+import { GUIPage } from "../tests/models/GUIPage";
 
 test.describe("Verify GuardianUI.com home page", () => {
   test("Should verify via a Referring Expression that the target page contains a component", async ({

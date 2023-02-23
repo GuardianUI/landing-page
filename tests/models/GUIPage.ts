@@ -19,6 +19,7 @@ export class GUIPage {
             refexp: refExp,
             screenshot: img,
         });
+        console.debug(centerPoint);
 
         // Select component at predicted point
         const refExpMatched = await this.elementAtPoint({
@@ -28,6 +29,31 @@ export class GUIPage {
         });
 
         return refExpMatched;
+    }
+
+    async clickElement(refExp: string) {
+        // Take a screenshot of the browser viewport
+        const img = await this.page.screenshot({
+            path: "screenshots/refexp-screenshot.png",
+        });
+
+        // Send screenshot and referring expression to GuardianUI AI model
+        const centerPoint = await this.refexpModelPredict({
+            refexp: refExp,
+            screenshot: img,
+        });
+
+        // Convert predicted point to viewport coordinates
+        const vpSize = await this.page.viewportSize();
+        const cpTranslated = {
+            x: vpSize?.width ? Math.round(centerPoint.x * vpSize?.width) : 0,
+            y: vpSize?.height ? Math.round(centerPoint.y * vpSize?.height) : 0,
+        };
+
+        console.debug(cpTranslated);
+
+        // Click component at predicted point
+        this.page.mouse.click(cpTranslated.x, cpTranslated.y);
     }
 
     /// Requests the GuardianUI AI model to predict the coordinates of a component
@@ -55,10 +81,10 @@ export class GUIPage {
           console.error({ responseBodyText });
           return undefined;
         }
-        console.debug({ response });
+        // console.debug({ response });
 
         const rbody = response.body;
-        console.debug({ rbody });
+        // console.debug({ rbody });
 
         const j = await response.json();
         const data = j.data;
@@ -72,18 +98,26 @@ export class GUIPage {
           x: vpSize?.width ? Math.round(centerPoint.x * vpSize?.width) : 0,
           y: vpSize?.height ? Math.round(centerPoint.y * vpSize?.height) : 0,
         };
-        console.debug({ centerPoint, cpTranslated });
+        // console.debug({ centerPoint, cpTranslated });
         // use predicted coordinates to verify against known data-testid label
-        const match = await page.evaluate(
-          ([cp, query]) => {
-            const element = document.elementFromPoint(cp.x, cp.y);
-            const attr = Object.keys(query)[0];
-            const match = element?.getAttribute(attr) === query[attr];
-            return match;
-          },
-          [cpTranslated, query]
+        const element = await page.evaluate(
+            ([cp]) => {
+                console.log(cp);
+                const element = document.elementFromPoint(cp.x, cp.y);
+                return element;
+            },
+            [cpTranslated]
         );
-        console.debug({ match });
-        return match;
+        // const match = await page.evaluate(
+        //   ([cp, query]) => {
+        //     const element = document.elementFromPoint(cp.x, cp.y);
+        //     const attr = Object.keys(query)[0];
+        //     const match = element?.getAttribute(attr) === query[attr];
+        //     return match;
+        //   },
+        //   [cpTranslated, query]
+        // );
+        console.debug({ element });
+        return element;
     }
 }
