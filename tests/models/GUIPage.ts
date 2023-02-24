@@ -59,7 +59,8 @@ export class GUIPage {
   /// Requests the GuardianUI AI model to predict the coordinates of a component
   async refexpModelPredict({ refexp, screenshot }) {
     const b64img = "data:image/png;base64," + screenshot.toString("base64");
-    console.debug(b64img.substring(0, 100));
+    console.debug({ refexp });
+    console.debug("image base64:", b64img.substring(0, 100));
     const model_revision = "main";
 
     const response = await fetch(

@@ -5,7 +5,7 @@ tasks:
   - init: |
       nvm use --lts
       yarn install
-      yarn playwright install-deps
+      yarn playwright install-deps chrome
     command: |
       npx playwright test  --project="Mobile Chrome"
 
