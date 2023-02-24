@@ -33,7 +33,7 @@ test.describe("Walk through a user story", () => {
     console.debug("Going through steps in user story");
     for (const step of steps) {
       console.debug(`Step : ${step}`);
-      await guiPage.clickElement(steps);
+      await guiPage.clickElement(step);
     }
   });
 });
