@@ -153,7 +153,7 @@ export class GUIPage {
     };
 
     marked.use({ walkTokens });
-    const md = readFileSync("tests/uniswap-flow.md", "utf8");
+    const md = readFileSync(mdPath, "utf8");
     marked.parse(md);
 
     // remove the Go to url step from list of refexp instructions
