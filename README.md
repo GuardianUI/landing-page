@@ -1,3 +1,3 @@
 ### README
 
-GuardianUI.com landing page.
+GuardianUI.com static web site code and public product demos (under `tests/`).
