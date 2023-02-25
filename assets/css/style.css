@@ -322,6 +322,27 @@ header.open .hamburger span:nth-child(4) {
     transform: translateY(10px);
 }
 
+/* Supporters Section */
+
+.supporters-content h2 {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.supporters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2.5rem 3rem;
+    margin-top: 3rem;
+}
+
+.supporters > div > img {
+    width: auto;
+    height: 34px;
+}
+
 /* Service Section */
 
 .service-flex,
