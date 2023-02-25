@@ -1,10 +1,29 @@
 import { Page } from "@playwright/test";
+import { marked } from "marked";
+import { readFileSync } from "fs";
 
 export class GUIPage {
   readonly page: Page;
 
   constructor(page: Page) {
     this.page = page;
+  }
+
+  /// Executes a test from a markdown file
+  async executeTestFromMarkdown(mdPath: string) {
+    const { testTitle, startUrl, steps } = this.parseMarkdown(mdPath);
+    console.debug({ testTitle, startUrl, steps });
+
+    // Go to the start url
+    console.debug("Loading page from url in user story");
+    await this.page.goto(startUrl);
+
+    // Execute the steps
+    console.debug("Going through steps in user story");
+    for (const step of steps) {
+      console.debug(`Step : ${step}`);
+      await this.clickElement(step);
+    }
   }
 
   /// Uses a Referring Expression to find a component on the page
@@ -114,5 +133,32 @@ export class GUIPage {
     );
     // console.debug({ element });
     return match;
+  }
+
+  /// Parses markdown into test title, start url, and steps
+  parseMarkdown(mdPath: string) {
+    let testTitle: string = "";
+    let startUrl: string = "";
+    let steps: string[] = [];
+
+    // Override function
+    const walkTokens = (token) => {
+      if (token.type === "heading") {
+        testTitle = token.text;
+      } else if (token.type === "link") {
+        startUrl = token.href;
+      } else if (token.type === "list_item") {
+        steps.push(token.text);
+      }
+    };
+
+    marked.use({ walkTokens });
+    const md = readFileSync(mdPath, "utf8");
+    marked.parse(md);
+
+    // remove the Go to url step from list of refexp instructions
+    steps.shift();
+
+    return { testTitle, startUrl, steps };
   }
 }
