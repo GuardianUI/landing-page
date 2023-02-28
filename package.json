@@ -4,7 +4,8 @@
   "description": "GuardianUI.com landing page.",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test --project='Mobile Chrome'"
+    "test": "playwright test --project='Mobile Chrome'",
+    "serve": "npx http-server --port 3000"
   },
   "repository": {
     "type": "git",
