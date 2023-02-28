@@ -7,6 +7,7 @@ tasks:
       yarn install
       yarn playwright install-deps chrome
     command: |
+      nvm use --lts
       npx playwright test  --project="Mobile Chrome"
 
 ports:

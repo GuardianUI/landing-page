@@ -83,7 +83,7 @@ export class GUIPage {
     const model_revision = "main";
 
     const response = await fetch(
-      "https://guardianui-ui-refexp-click.hf.space/run/predict",
+      "https://3etiu1llv4.execute-api.us-east-1.amazonaws.com/run/predict",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
