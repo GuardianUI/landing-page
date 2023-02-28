@@ -81,6 +81,7 @@ export class GUIPage {
     console.debug({ refexp });
     console.debug("image base64:", b64img.substring(0, 100));
     const model_revision = "main";
+    const return_annotated_image = false;
 
     const response = await fetch(
       "https://3etiu1llv4.execute-api.us-east-1.amazonaws.com/run/predict",
@@ -92,6 +93,7 @@ export class GUIPage {
             b64img, // "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==",
             refexp, // "select button xyz",
             model_revision, // "main" or another valid git tag
+            return_annotated_image
           ],
         }),
       }
