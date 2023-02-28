@@ -11,8 +11,8 @@ test.describe("Verify GuardianUI.com home page", () => {
 
     // Select element using a Referring Expression
     const refExpMatched = await guiPage.findElement(
-      "select GuardianUI logo at the top left",
-      { alt: "GuardianUI" }
+      "select join waitlist button under frontend text",
+      { "data-testid": "join-waitlist-button-hero" }
     );
 
     // Expect element to exist
