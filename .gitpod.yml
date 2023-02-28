@@ -1,14 +1,13 @@
+image:
+  file: .gitpod.Dockerfile
 
 tasks:
   - before: |
-      nvm install --lts
       npx playwright install
       npx playwright install-deps
   - init: |
-      nvm install --lts
       yarn install
     command: |
-      nvm install --lts
       npx playwright test  --project="Mobile Chrome"
 
 ports:
