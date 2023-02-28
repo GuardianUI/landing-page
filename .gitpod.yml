@@ -3,6 +3,7 @@ image:
 
 tasks:
   - before: |
+      nvm use --lts
       PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install chromium
       # npx playwright install
       # npx playwright install-deps
@@ -11,6 +12,7 @@ tasks:
     command: |
       gp env PLAYWRIGHT_BROWSERS_PATH=0
       eval $(gp env -e)
+      nvm use --lts
       node -v
       npx playwright test  --project="Mobile Chrome"
 
