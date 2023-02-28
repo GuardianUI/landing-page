@@ -5,10 +5,10 @@ tasks:
       npx playwright install
       npx playwright install-deps
   - init: |
-      nvm use --lts
+      nvm install --lts
       yarn install
     command: |
-      nvm use --lts
+      nvm install --lts
       npx playwright test  --project="Mobile Chrome"
 
 ports:
