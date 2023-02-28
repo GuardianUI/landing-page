@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { Page, expect } from "@playwright/test";
 import { marked } from "marked";
 import { readFileSync } from "fs";
 
@@ -22,16 +22,25 @@ export class GUIPage {
     console.debug("Going through steps in user story");
     for (const step of steps) {
       console.debug(`Step : ${step}`);
-      await this.clickElement(step);
+      const { refexp, testAttr } = step;
+      await this.clickElement(refexp, testAttr);
     }
+  }
+
+  async xyxy(centerPoint) {
+    // Convert predicted point to viewport coordinates
+    const vpSize = await this.page.viewportSize();
+    const cpTranslated = {
+      x: vpSize?.width ? Math.round(centerPoint.x * vpSize?.width) : 0,
+      y: vpSize?.height ? Math.round(centerPoint.y * vpSize?.height) : 0,
+    };
+    return cpTranslated;
   }
 
   /// Uses a Referring Expression to find a component on the page
   async findElement(refExp: string, query: { [key: string]: string }) {
     // Take a screenshot of the browser viewport
-    const img = await this.page.screenshot({
-      path: "screenshots/refexp-screenshot.png",
-    });
+    const img = await this.page.screenshot();
 
     // Send screenshot and referring expression to GuardianUI AI model
     const centerPoint = await this.refexpModelPredict({
@@ -50,11 +59,9 @@ export class GUIPage {
     return refExpMatched;
   }
 
-  async clickElement(refExp: string) {
+  async clickElement(refExp: string, query: { [key: string]: string }) {
     // Take a screenshot of the browser viewport
-    const img = await this.page.screenshot({
-      path: "screenshots/refexp-screenshot.png",
-    });
+    const img = await this.page.screenshot();
 
     // Send screenshot and referring expression to GuardianUI AI model
     const centerPoint = await this.refexpModelPredict({
@@ -62,12 +69,22 @@ export class GUIPage {
       screenshot: img,
     });
 
-    // Convert predicted point to viewport coordinates
-    const vpSize = await this.page.viewportSize();
-    const cpTranslated = {
-      x: vpSize?.width ? Math.round(centerPoint.x * vpSize?.width) : 0,
-      y: vpSize?.height ? Math.round(centerPoint.y * vpSize?.height) : 0,
-    };
+    // If query provided, verify match
+    if (query) {
+      const refExpMatched = await this.elementAtPoint({
+        page: this.page,
+        centerPoint: centerPoint,
+        query,
+      });
+      await expect(
+        refExpMatched,
+        `Selected element should have attribute "${
+          Object.keys(query)[0]
+        }" with value "${query[Object.keys(query)[0]]}"`
+      ).toBeTruthy();
+    }
+
+    const cpTranslated = await this.xyxy(centerPoint);
 
     console.debug({ centerPoint, cpTranslated });
 
@@ -93,7 +110,7 @@ export class GUIPage {
             b64img, // "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==",
             refexp, // "select button xyz",
             model_revision, // "main" or another valid git tag
-            return_annotated_image
+            return_annotated_image,
           ],
         }),
       }
@@ -117,16 +134,13 @@ export class GUIPage {
 
   /// Selects a component at the given coordinates that matches an attribute
   async elementAtPoint({ page, centerPoint, query }) {
-    const vpSize = await page.viewportSize();
-    const cpTranslated = {
-      x: vpSize?.width ? Math.round(centerPoint.x * vpSize?.width) : 0,
-      y: vpSize?.height ? Math.round(centerPoint.y * vpSize?.height) : 0,
-    };
+    const cpTranslated = await this.xyxy(centerPoint);
     console.debug({ centerPoint, cpTranslated });
     // use predicted coordinates to verify against known data-testid label
     const match = await page.evaluate(
       ([cp, query]) => {
         const element = document.elementFromPoint(cp.x, cp.y);
+        console.debug({ element });
         const attr = Object.keys(query)[0];
         const match = element?.getAttribute(attr) === query[attr];
         return match;
@@ -141,7 +155,7 @@ export class GUIPage {
   parseMarkdown(mdPath: string) {
     let testTitle: string = "";
     let startUrl: string = "";
-    let steps: string[] = [];
+    let steps: any[] = [];
 
     // Override function
     const walkTokens = (token) => {
@@ -150,7 +164,25 @@ export class GUIPage {
       } else if (token.type === "link") {
         startUrl = token.href;
       } else if (token.type === "list_item") {
-        steps.push(token.text);
+        console.debug("List item : ", { token });
+        let refexp, testAttr;
+        for (const t of token.tokens[0].tokens) {
+          console.debug("List item token: ", { t });
+          if (t.type === "text") {
+            refexp = t.text;
+            console.debug({ refexp });
+          } else if (t.type === "html") {
+            const testAttrRaw = t.raw;
+            const regex = /<!--(.*?)-->/i;
+            const found = testAttrRaw.match(regex);
+            console.debug({ found });
+            // The element at 0 is the whole match.
+            // We only want the json group inside the html comments.
+            testAttr = JSON.parse(found[1]);
+            console.debug({ testAttr });
+          }
+        }
+        steps.push({ refexp, testAttr });
       }
     };
 
