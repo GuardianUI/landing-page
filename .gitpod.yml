@@ -3,11 +3,14 @@ image:
 
 tasks:
   - before: |
-      npx playwright install
-      npx playwright install-deps
+      PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install chromium
+      # npx playwright install
+      # npx playwright install-deps
   - init: |
       yarn install
     command: |
+      gp env PLAYWRIGHT_BROWSERS_PATH=0
+      eval $(gp env -e)
       node -v
       npx playwright test  --project="Mobile Chrome"
 

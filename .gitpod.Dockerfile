@@ -5,3 +5,5 @@ RUN bash -c 'VERSION="--lts" \
     && nvm use $VERSION'
 
 RUN echo "nvm use $VERSION &>/dev/null" >> ~/.bashrc.d/51-nvm-fix
+
+RUN npx playwright install-deps chromium
