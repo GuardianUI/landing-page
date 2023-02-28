@@ -8,6 +8,7 @@ tasks:
   - init: |
       yarn install
     command: |
+      node -v
       npx playwright test  --project="Mobile Chrome"
 
 ports:
