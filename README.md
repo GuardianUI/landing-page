@@ -1,8 +1,8 @@
-### README
+# README
 
 GuardianUI.com static web site code and public product demos (under `tests/`).
 
-# Background
+## Background
 
 End-to-end (E2E) tests check the functionality of a system by simulating real-world scenarios and interactions between different components. Developers traditionally do not write end-to-end tests because they are time-consuming and difficult to maintain.
 
@@ -46,7 +46,7 @@ User Story:
 
 In [this demo video](https://www.youtube.com/watch?v=x95IAEvADvc), you will see the user story from above in a markdown file, which is automatically converted into test code and run.
 
-#Team
+## Team
 GuardianUI is co-founded by:
 - [Ivelin Ivanov](https://github.com/ivelin) - tech entrepreneur and open source contributor
 - [Lienid](https://github.com/0xLienid) - FE and smart contract developer at OlympusDAO
