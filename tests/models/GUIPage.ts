@@ -27,6 +27,12 @@ export class GUIPage {
     }
   }
 
+  getScreenshotPath() {
+    const timestamp = Date.now();
+    const screenshotPath = `screenshots/refexp-screenshot-${timestamp}.png`;
+    return screenshotPath;
+  }
+
   async xyxy(centerPoint) {
     // Convert predicted point to viewport coordinates
     const vpSize = await this.page.viewportSize();
@@ -40,14 +46,17 @@ export class GUIPage {
   /// Uses a Referring Expression to find a component on the page
   async findElement(refExp: string, query: { [key: string]: string }) {
     // Take a screenshot of the browser viewport
-    const img = await this.page.screenshot();
+    const screenshotPath = this.getScreenshotPath();
+    const img = await this.page.screenshot({
+      path: screenshotPath,
+    });
 
     // Send screenshot and referring expression to GuardianUI AI model
     const centerPoint = await this.refexpModelPredict({
       refexp: refExp,
       screenshot: img,
     });
-    console.debug(centerPoint);
+    console.debug({ screenshotPath, centerPoint });
 
     // Select component at predicted point
     const refExpMatched = await this.elementAtPoint({
@@ -61,7 +70,10 @@ export class GUIPage {
 
   async clickElement(refExp: string, query: { [key: string]: string }) {
     // Take a screenshot of the browser viewport
-    const img = await this.page.screenshot();
+    const screenshotPath = this.getScreenshotPath();
+    const img = await this.page.screenshot({
+      path: screenshotPath,
+    });
 
     // Send screenshot and referring expression to GuardianUI AI model
     const centerPoint = await this.refexpModelPredict({
@@ -86,7 +98,7 @@ export class GUIPage {
 
     const cpTranslated = await this.xyxy(centerPoint);
 
-    console.debug({ centerPoint, cpTranslated });
+    console.debug({ screenshotPath, centerPoint, cpTranslated });
 
     // Click component at predicted point
     this.page.mouse.click(cpTranslated.x, cpTranslated.y);
@@ -101,7 +113,7 @@ export class GUIPage {
     const return_annotated_image = false;
 
     const response = await fetch(
-      "https://3etiu1llv4.execute-api.us-east-1.amazonaws.com/run/predict",
+      "https://5pp4oqgidc.execute-api.us-east-1.amazonaws.com/run/predict",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
