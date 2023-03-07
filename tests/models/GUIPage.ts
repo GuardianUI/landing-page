@@ -26,11 +26,18 @@ export class GUIPage {
     }
   }
 
+  getScreenshotPath() {
+    const timestamp = Date.now();
+    const screenshotPath = `screenshots/refexp-screenshot-${timestamp}.png`;
+    return screenshotPath;
+  }
+
   /// Uses a Referring Expression to find a component on the page
   async findElement(refExp: string, query: { [key: string]: string }) {
     // Take a screenshot of the browser viewport
+    const screenshotPath = this.getScreenshotPath();
     const img = await this.page.screenshot({
-      path: "screenshots/refexp-screenshot.png",
+      path: screenshotPath,
     });
 
     // Send screenshot and referring expression to GuardianUI AI model
@@ -38,7 +45,7 @@ export class GUIPage {
       refexp: refExp,
       screenshot: img,
     });
-    console.debug(centerPoint);
+    console.debug({ screenshotPath, centerPoint });
 
     // Select component at predicted point
     const refExpMatched = await this.elementAtPoint({
@@ -52,8 +59,9 @@ export class GUIPage {
 
   async clickElement(refExp: string) {
     // Take a screenshot of the browser viewport
+    const screenshotPath = this.getScreenshotPath();
     const img = await this.page.screenshot({
-      path: "screenshots/refexp-screenshot.png",
+      path: screenshotPath,
     });
 
     // Send screenshot and referring expression to GuardianUI AI model
@@ -69,7 +77,7 @@ export class GUIPage {
       y: vpSize?.height ? Math.round(centerPoint.y * vpSize?.height) : 0,
     };
 
-    console.debug({ centerPoint, cpTranslated });
+    console.debug({ screenshotPath, centerPoint, cpTranslated });
 
     // Click component at predicted point
     this.page.mouse.click(cpTranslated.x, cpTranslated.y);
@@ -84,7 +92,7 @@ export class GUIPage {
     const return_annotated_image = false;
 
     const response = await fetch(
-      "https://3etiu1llv4.execute-api.us-east-1.amazonaws.com/run/predict",
+      "https://5pp4oqgidc.execute-api.us-east-1.amazonaws.com/run/predict",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -93,7 +101,7 @@ export class GUIPage {
             b64img, // "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==",
             refexp, // "select button xyz",
             model_revision, // "main" or another valid git tag
-            return_annotated_image
+            return_annotated_image,
           ],
         }),
       }
