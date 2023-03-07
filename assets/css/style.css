@@ -471,7 +471,6 @@ header.open .hamburger span:nth-child(4) {
 }
 
 .service-video-flex iframe {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
