@@ -477,7 +477,7 @@ header.open .hamburger span:nth-child(4) {
 }
 
 .video-player iframe {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
