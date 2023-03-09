@@ -453,30 +453,51 @@ header.open .hamburger span:nth-child(4) {
     fill: #414855;
 }
 
-.service-video-flex {
+/* Video Section */
+
+.video-flex {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin-top: 2rem;
-  padding: 2rem;
-  background-color: #f7f7f7;
-  border-radius: 10px;
+  gap: 4rem;
 }
 
-.service-video-flex .video-wrapper {
+.video-text {
+  flex-basis: 50%;
+  text-align: center;
+}
+
+.video-text h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.video-text h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.video-text p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+.video-embed {
+  flex-basis: 50%;
+  overflow: hidden;
   position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
 }
 
-.service-video-flex iframe {
-  top: 0;
-  left: 0;
-  width: 100%;
+.video-embed iframe {
+  border: 0;
   height: 100%;
-  border: none;
-  border-radius: 10px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 
