@@ -470,8 +470,9 @@ header.open .hamburger span:nth-child(4) {
 }
 
 .video-player { 
-  width: 100%;
-  aspect-ratio: 16 / 9;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
 }
 
 .video-player iframe {
