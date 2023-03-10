@@ -480,11 +480,18 @@ header.open .hamburger span:nth-child(4) {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: calc(100vw/1.77777778);
+    width: 100%;
+    height: 100%;
     border-radius: 10px;
     -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    
+    /* Remove blank space at top and bottom */
+    
+    display: block;
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Testimonial Section */
