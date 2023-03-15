@@ -647,6 +647,15 @@ header.open .hamburger span:nth-child(4) {
     fill: var(--primaryColor);
 }
 
+/* CSS for FAQ section */
+      .faq-question {
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .faq-answer {
+        display: none;
+      }
+
 /* Footer */
 
 footer {
