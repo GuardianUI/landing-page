@@ -624,6 +624,35 @@
                 </div>
             </section>
             <!-- Feature Section End -->
+            
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-container">
+                        <div class="faq-item">
+                            <div class="faq-question">What is your return policy?</div>
+                            <div class="faq-answer">
+                                Our return policy allows you to return any item within 30 days of purchase for a full refund.
+                            </div>
+                            </div>
+                        <div class="faq-item">
+                            <div class="faq-question">How do I track my order?</div>
+                            <div class="faq-answer">
+                              You can track your order by visiting the "Track Order" page on our website and entering your order number.
+                            </div>
+                          </div>
+                        </div>
+            <script>
+            // JavaScript for FAQ section
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach((faqQuestion) => {
+              faqQuestion.addEventListener('click', () => {
+                faqQuestion.nextElementSibling.classList.toggle('faq-answer');
+              });
+            });
+            </script>
+            
         </main>
 
         <!-- Footer -->
