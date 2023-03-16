@@ -628,177 +628,178 @@
             <!-- FAQ Section -->        
         <h2 class="faq-heading">Frequently asked questions</h2>
         <section class="faq-container">
-            <div class="faq-one">
+            <div class="feature-content">
+                <div class="faq-one">
 
-                <!-- faq question -->
-                <h3 class="faq-page">What is GuardianUI?</h3>
+                    <!-- faq question -->
+                    <h3 class="faq-page">What is GuardianUI?</h3>
 
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>LGuardianUI is an end-to-end testing and monitoring platform for web3 apps. We automate 
-                        end-to-end testing of web3 critical paths, monitor your app, and provide real-time alerting 
-                        and observability to ensure deployed apps create the expected smart contract interactions 
-                        for users.</p>
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>LGuardianUI is an end-to-end testing and monitoring platform for web3 apps. We automate 
+                            end-to-end testing of web3 critical paths, monitor your app, and provide real-time alerting 
+                            and observability to ensure deployed apps create the expected smart contract interactions 
+                            for users.</p>
+                    </div>
+                </div>
+                <hr class="hr-line">
+
+                <div class="faq-two">
+
+                    <!-- faq question -->
+                    <h3 class="faq-page">Why do you need an FAQ page?</h3>
+
+                    <!-- faq answer -->
+
+                    <div class="faq-body">
+                        <p>We check that your app’s frontend is creating the expected smart contract write transactions. 
+                            Specifically, we make sure transactions point to the right contracts and approvals give the 
+                            appropriate access to user funds.</p>
+                    </div>
+                </div>
+                <hr class="hr-line">
+
+
+                <div class="faq-three">
+
+                    <!-- faq question -->
+                    <h3 class="faq-page">Why is monitoring and securing our frontend important?</h3>
+
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>Users deserve safe and secure experiences, and there are tons of ways users can get rugged 
+                            while using your app without you knowing it. Whether it’s bad code accidentally getting 
+                            pushed to production, supply chain attacks, or middleware attacks - your app’s frontend 
+                            has significant risk vectors that’s impossible for you and your team to manually monitor. 
+                            That’s where we come in. With GuardianUI, you can set it and forget it - by continuously 
+                            monitoring that your frontend is working as expected. If it doesn’t, we’ll immediately notify 
+                            you of exactly what’s wrong so you can address the issue immediately and keep your users 
+                            safe.</p>
+                    </div>
+                <hr class="hr-line">
+
+
+                <div class="faq-four">
+
+                    <!-- faq question -->
+                    <h3 class="faq-page">What are examples of things GuardianUI protects against?</h3>
+
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>GuardianUI monitors for anything that might cause your frontend to create the wrong smart 
+                            contract interactions and rug your users. This includes middleware and supply chain attacks 
+                            that could compromise your frontend and alter its contract interactions, such as DNS attacks, 
+                            Cloudflare attacks, javascript injections, malicious package injections, package name squatting, 
+                            malicious minifiers, compromised linters, and more. It also includes incorrect code getting 
+                            pushed to production.</p>
+                    </div>
+                <hr class="hr-line">
+
+
+                <div class="faq-five">
+
+                    <!-- faq question -->
+                    <h3 class="faq-page">What are examples of web3 hacks GuardianUI would protect against? </h3>
+
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>There are countless examples of FE attacks resulting in users getting rugged. Here are a few:</p>
+                        <ul>
+                            <li><a href="https://www.coindesk.com/business/2021/12/02/badger-dao-protocol-suffers-10m-exploit/">BadgerDAO (Cloudflare) - $120M in user funds lost</a></li>
+                            <li><a href="https://www.coindesk.com/business/2021/09/17/3m-in-ether-stolen-from-sushiswaps-miso-launchpad/">Sushiswap’s Miso (Supply Chain) - $3M in user funds lost</a></li>
+                            <li><a href="https://cointelegraph.com/news/curve-finance-exploit-experts-dissect-what-went-wrong">Curve Finance (DNS) - $600k in user funds lost</a></li>
+                            <li><a href="https://twitter.com/ribbonfinance/status/1540250826156871681?lang=en">Ribbon Finance (DNS) - $500k in user funds lost</a></li>
+                            <li><a href="https://cryptopotato.com/an-estimated-128-eth-lost-in-the-celer-protocol-dns-attack/">Celer Protocol (DNS) - $250k in user funds lost</a></li>
+                            <li><a href="https://www.trendmicro.com/vinfo/es/security/news/cybercrime-and-digital-threats/-attackers-hijack-dns-entry-of-stellar-lumen-wallet-application-blackwallet">Black Wallet (DNS) - $400k in user funds lost</a></li>
+                            <li><a href="https://decrypt.co/61431/pancakeswap-hacked">Pancake Swap (DNS) - prompted users to enter seed phrase</a></li>
+                            <li><a href="https://thedefiant.io/social-tokens-get-rolled-on">Cream Finance (DNS) - prompted users to enter seed phrase</a></li>
+                        </ul>
+                    </div>
+                <hr class="hr-line">
+
+
+                <div class="faq-six">
+
+                    <!-- faq question -->
+                    <h3 class="faq-page">What end-to-end testing framework does GuardianUI use?</h3>
+
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>We’ve extended the popular <a href="https://playwright.dev/docs/intro" target="_blank">Playwright</a> framework to include an injected 
+                            wallet for testing interactions between your frontend and your smart contracts.</p>
+                    </div>
+                <hr class="hr-line">
+
+
+                <div class="faq-seven">
+
+                    <!-- faq question -->
+                    <h3 class="faq-page">What blockchains does GuardianUI cover?</h3>
+
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>Currently, GuardianUI only monitors apps on Ethereum mainnet, but we plan to expand our coverage 
+                            to all EVM compatible chains. If your project is not on mainnet, we want to hear from you! 
+                            Please <a href="mailto:marshall@guardianui.com">email us</a> and let us know more, so we know which chains to prioritize 
+                            next!</p>
+                    </div>    
+                <hr class="hr-line">
+
+                <div class="faq-eight">
+
+                    <!-- faq question -->
+                    <h3 class="faq-page">We already run tests in our development pipeline. Why do we also need GuardianUI?</h3>
+
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>GuardianUI monitors your live app to make sure it’s safe for users. We continuously check to make sure your app’s 
+                            live UI is creating the expected smart contract interactions for your users. If a check fails for some reason 
+                            (e.g. an attack or simply bad code), we alert you immediately with information to address the root issue so you 
+                            can keep your users safe. </p>
+                    </div>
+                <hr class="hr-line">
+
+
+                <div class="faq-nine">
+
+                    <!-- faq question -->
+                    <h3 class="faq-page">What happens when a check fails?</h3>
+
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>If a check fails, GuardianUI will immediately send your team an alert via email and/or discord with the exact failure 
+                            reason. We eliminate the guesswork so you can immediately address the root issue. For more about alerts, 
+                            please see <a href="https://guardianui.gitbook.io/beta-documentation/alerts/alerts-overview">our docs</a>.</p>
+                    </div>    
+                <hr class="hr-line">
+
+
+                <div class="faq-ten">
+
+                    <!-- faq question -->
+                    <h3 class="faq-page">Does the GuardianUI testing framework also test state change?</h3>
+
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>Currently, our framework mocks transactions and approvals to check that contract interactions are correct but 
+                            does not submit transactions on chain.</p>
+                    </div>        
+                <hr class="hr-line">
+
+
+                <div class="faq-eleven">
+
+                    <!-- faq question -->
+                    <h3 class="faq-page">How many tests should we write for our app?</h3>
+
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>Every app is unique with different security needs. As a general rule, you should consider creating tests for 
+                            any interaction your frontend has with smart contracts. We are happy to write your tests for you if you’d 
+                            prefer we do it instead of your team.</p>
+                    </div>            
                 </div>
             </div>
-            <hr class="hr-line">
-
-            <div class="faq-two">
-
-                <!-- faq question -->
-                <h3 class="faq-page">Why do you need an FAQ page?</h3>
-
-                <!-- faq answer -->
-
-                <div class="faq-body">
-                    <p>We check that your app’s frontend is creating the expected smart contract write transactions. 
-                        Specifically, we make sure transactions point to the right contracts and approvals give the 
-                        appropriate access to user funds.</p>
-                </div>
-            </div>
-            <hr class="hr-line">
-
-
-            <div class="faq-three">
-
-                <!-- faq question -->
-                <h3 class="faq-page">Why is monitoring and securing our frontend important?</h3>
-
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>Users deserve safe and secure experiences, and there are tons of ways users can get rugged 
-                        while using your app without you knowing it. Whether it’s bad code accidentally getting 
-                        pushed to production, supply chain attacks, or middleware attacks - your app’s frontend 
-                        has significant risk vectors that’s impossible for you and your team to manually monitor. 
-                        That’s where we come in. With GuardianUI, you can set it and forget it - by continuously 
-                        monitoring that your frontend is working as expected. If it doesn’t, we’ll immediately notify 
-                        you of exactly what’s wrong so you can address the issue immediately and keep your users 
-                        safe.</p>
-                </div>
-            <hr class="hr-line">
-
-
-            <div class="faq-four">
-
-                <!-- faq question -->
-                <h3 class="faq-page">What are examples of things GuardianUI protects against?</h3>
-
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>GuardianUI monitors for anything that might cause your frontend to create the wrong smart 
-                        contract interactions and rug your users. This includes middleware and supply chain attacks 
-                        that could compromise your frontend and alter its contract interactions, such as DNS attacks, 
-                        Cloudflare attacks, javascript injections, malicious package injections, package name squatting, 
-                        malicious minifiers, compromised linters, and more. It also includes incorrect code getting 
-                        pushed to production.</p>
-                </div>
-            <hr class="hr-line">
-
-
-            <div class="faq-five">
-
-                <!-- faq question -->
-                <h3 class="faq-page">What are examples of web3 hacks GuardianUI would protect against? </h3>
-
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>There are countless examples of FE attacks resulting in users getting rugged. Here are a few:</p>
-                    <ul>
-                        <li><a href="https://www.coindesk.com/business/2021/12/02/badger-dao-protocol-suffers-10m-exploit/">BadgerDAO (Cloudflare) - $120M in user funds lost</a></li>
-                        <li><a href="https://www.coindesk.com/business/2021/09/17/3m-in-ether-stolen-from-sushiswaps-miso-launchpad/">Sushiswap’s Miso (Supply Chain) - $3M in user funds lost</a></li>
-                        <li><a href="https://cointelegraph.com/news/curve-finance-exploit-experts-dissect-what-went-wrong">Curve Finance (DNS) - $600k in user funds lost</a></li>
-                        <li><a href="https://twitter.com/ribbonfinance/status/1540250826156871681?lang=en">Ribbon Finance (DNS) - $500k in user funds lost</a></li>
-                        <li><a href="https://cryptopotato.com/an-estimated-128-eth-lost-in-the-celer-protocol-dns-attack/">Celer Protocol (DNS) - $250k in user funds lost</a></li>
-                        <li><a href="https://www.trendmicro.com/vinfo/es/security/news/cybercrime-and-digital-threats/-attackers-hijack-dns-entry-of-stellar-lumen-wallet-application-blackwallet">Black Wallet (DNS) - $400k in user funds lost</a></li>
-                        <li><a href="https://decrypt.co/61431/pancakeswap-hacked">Pancake Swap (DNS) - prompted users to enter seed phrase</a></li>
-                        <li><a href="https://thedefiant.io/social-tokens-get-rolled-on">Cream Finance (DNS) - prompted users to enter seed phrase</a></li>
-                    </ul>
-                </div>
-            <hr class="hr-line">
-
-
-            <div class="faq-six">
-
-                <!-- faq question -->
-                <h3 class="faq-page">What end-to-end testing framework does GuardianUI use?</h3>
-
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>We’ve extended the popular <a href="https://playwright.dev/docs/intro" target="_blank">Playwright</a> framework to include an injected 
-                        wallet for testing interactions between your frontend and your smart contracts.</p>
-                </div>
-            <hr class="hr-line">
-                
-                
-            <div class="faq-seven">
-
-                <!-- faq question -->
-                <h3 class="faq-page">What blockchains does GuardianUI cover?</h3>
-
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>Currently, GuardianUI only monitors apps on Ethereum mainnet, but we plan to expand our coverage 
-                        to all EVM compatible chains. If your project is not on mainnet, we want to hear from you! 
-                        Please <a href="mailto:marshall@guardianui.com">email us</a> and let us know more, so we know which chains to prioritize 
-                        next!</p>
-                </div>    
-            <hr class="hr-line">
-                
-            <div class="faq-eight">
-
-                <!-- faq question -->
-                <h3 class="faq-page">We already run tests in our development pipeline. Why do we also need GuardianUI?</h3>
-
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>GuardianUI monitors your live app to make sure it’s safe for users. We continuously check to make sure your app’s 
-                        live UI is creating the expected smart contract interactions for your users. If a check fails for some reason 
-                        (e.g. an attack or simply bad code), we alert you immediately with information to address the root issue so you 
-                        can keep your users safe. </p>
-                </div>
-            <hr class="hr-line">
-            
-                
-            <div class="faq-nine">
-
-                <!-- faq question -->
-                <h3 class="faq-page">What happens when a check fails?</h3>
-
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>If a check fails, GuardianUI will immediately send your team an alert via email and/or discord with the exact failure 
-                        reason. We eliminate the guesswork so you can immediately address the root issue. For more about alerts, 
-                        please see <a href="https://guardianui.gitbook.io/beta-documentation/alerts/alerts-overview">our docs</a>.</p>
-                </div>    
-            <hr class="hr-line">
-                
-                
-            <div class="faq-ten">
-
-                <!-- faq question -->
-                <h3 class="faq-page">Does the GuardianUI testing framework also test state change?</h3>
-
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>Currently, our framework mocks transactions and approvals to check that contract interactions are correct but 
-                        does not submit transactions on chain.</p>
-                </div>        
-            <hr class="hr-line">
-                
-            
-            <div class="faq-eleven">
-
-                <!-- faq question -->
-                <h3 class="faq-page">How many tests should we write for our app?</h3>
-
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>Every app is unique with different security needs. As a general rule, you should consider creating tests for 
-                        any interaction your frontend has with smart contracts. We are happy to write your tests for you if you’d 
-                        prefer we do it instead of your team.</p>
-                </div>            
-            </div>
-
         </section>
  
     <script src="main.js"></script>            
