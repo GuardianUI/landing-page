@@ -684,8 +684,9 @@ header.open .hamburger span:nth-child(4) {
     outline: none;
     transition: 0.4s;
     margin: auto;
-
+    text-align: left;
 }
+
 .faq-body{
     margin: auto;
     /* text-align: center; */
