@@ -676,7 +676,7 @@ header.open .hamburger span:nth-child(4) {
 
 .faq-page {
     /* background-color: #eee; */
-    color: #ced4f3;
+    color: #1E2D3D;
     cursor: pointer;
     padding: 30px 20px;
     width: 60%;
@@ -698,7 +698,7 @@ header.open .hamburger span:nth-child(4) {
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active,
 .faq-page:hover {
-    background-color: #F9F9F9;
+    background-color: #ced4f3;
 }
 
 /* Style the faq-page panel. Note: hidden by default */
