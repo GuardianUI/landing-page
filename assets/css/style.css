@@ -665,6 +665,7 @@ header.open .hamburger span:nth-child(4) {
     border-radius: 24px 24px 140px 140px;
     background-color: #f7f8fd;
     text-align: center;
+    width: 50%;
 }
 
 .hr-line{
