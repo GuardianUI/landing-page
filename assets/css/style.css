@@ -650,6 +650,10 @@ header.open .hamburger span:nth-child(4) {
 
 /* FAQ Section */
 
+.faq-section {
+    padding-top: 0;
+}
+
 .faq-heading{
     border-bottom: #777;
     padding: 20px 60px;
@@ -660,6 +664,15 @@ justify-content: center;
 flex-direction: column;
 
 }
+
+.faq-content {
+    position: relative;
+    padding: 2rem;
+    border-radius: 24px 24px 140px 140px;
+    background-color: #f7f8fd;
+    text-align: center;
+}
+
 .hr-line{
   width: 60%;
   margin: auto;
