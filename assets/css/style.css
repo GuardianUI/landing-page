@@ -665,7 +665,6 @@ header.open .hamburger span:nth-child(4) {
     border-radius: 24px 24px 140px 140px;
     background-color: #f7f8fd;
     text-align: center;
-    width: 50%;
 }
 
 .hr-line{
@@ -677,7 +676,7 @@ header.open .hamburger span:nth-child(4) {
 
 .faq-page {
     /* background-color: #eee; */
-    color: #444;
+    color: #ced4f3;
     cursor: pointer;
     padding: 30px 20px;
     width: 60%;
@@ -705,7 +704,7 @@ header.open .hamburger span:nth-child(4) {
 /* Style the faq-page panel. Note: hidden by default */
 .faq-body {
     padding: 0 18px;
-    background-color: white;
+    background-color: #f7f8fd;
     display: none;
     overflow: hidden;
 }
@@ -714,7 +713,7 @@ header.open .hamburger span:nth-child(4) {
     content: '\02795';
     /* Unicode character for "plus" sign (+) */
     font-size: 13px;
-    color: #777;
+    color: #497B46;
     float: right;
     margin-left: 5px;
 }
