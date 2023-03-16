@@ -85,6 +85,14 @@ section.alt {
     font-size: 1rem;
 }
 
+.link--no-arrow {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: var(--secondaryColor);
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
 .link:hover {
     color: #455096;
 }
